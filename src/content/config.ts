@@ -118,11 +118,23 @@ const eventCollection = defineCollection({
     }),
 });
 
-
+const contentCollection = defineCollection({
+  type: "content",
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      desc: z.string(), 
+      img: image(),
+      alt: z.string(),
+      publishedTime: z.string(), 
+      modifiedTime: z.string().optional(), 
+    }),
+});
 
 export const collections = {
   docs: defineCollection({ schema: docsSchema() }),
   products: productsCollection,
   blog: blogCollection,
   event: eventCollection,
+  content: contentCollection
 };
