@@ -1,0 +1,435 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { SITE } from "@data/constants";
+import lovosis from '../../assets/img/lovosis.jpg';
+
+const pageTitle: string = `About | ${SITE.Title + " - " + ", United Arab Emirates"}`;
+const NAME = "Lovosis Technology L.L.C U.A.E";
+const IMAGE = lovosis;
+
+const { 
+  title=["Why Choose Lovosis?"],
+  subTitle=["Expert custom fabrication and surveillance solutions tailored to your unique security and technological needs."], 
+  benefits=[
+      "Unparalleled Expertise in Surveillance Technology",
+      "Satisfied Customers and High-quality Solutions",
+      "Tailored IT Solutions & Custom Fabrication Solution",
+      "Advanced Fastening Technology for Quick Installation",
+      "Dedicated Support and Maintenance Services"
+    ] 
+  } = Astro.props;
+
+interface Props {
+  title: string;
+  subTitle?: string;
+  benefits?: Array<string>;
+}
+const abtitle: string = "About us";
+const absubTitle: string ="Discover Lovosis, Dubai's authorized supplier of customized fabrication and surveillance solutions"
+const {
+  Abouttitle=[`Know About <span class="text-blue-600 dark:text-teal-600">lovosis</span>`],
+  AboutsubTitle="At Lovosis, we specialize in cutting-edge surveillance and IT solutions, positioned as a leading provider in Dubai. Our expertise focuses on delivering robust security and technological efficiency to our clients. While we offer custom fabrication, our core strength lies in comprehensive surveillance systems designed to meet diverse and dynamic needs. we are proud to serve over 7k+ customers as Dubai's premier provider of advanced surveillance and IT solutions. Additionally, we speed up assembly with our advanced fastening solutions, ensuring that our installations are completed at twice the usual speed, providing efficiency alongside security. Trust Lovosis to enhance and secure your digital landscape with precision and innovation."
+} = Astro.props;
+
+interface Props {
+  Abouttitle: string;
+  AboutsubTitle?: string;
+  AboutprimaryBtn?: string;
+  AboutprimaryBtnURL?: string;
+}
+const ListItemMarker: string = `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mt-0.5 h-6 w-6 text-blue-600 dark:text-teal-600 flex-none"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>`;
+const structuredData={
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://lovosis.com/#organization",
+        name: NAME,
+        url: SITE.baseURL,
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://lovosis.com/#website",
+        url:SITE.baseURL ,
+        name: NAME,
+        publisher: { "@id": "https://lovosis.com/#organization" },
+        inLanguage: "en-US",
+      },
+      {
+        "@type": "ImageObject",
+        "@id": IMAGE,
+        url: IMAGE,
+        width: "200",
+        height: "200",
+        inLanguage: "en-US",
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://lovosis.com/#breadcrumb",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            item: { "@id": SITE.baseURL, name: "Home" },
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            item: { "@id": SITE.baseURL, name: "About" },
+          },
+        ],
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://lovosis.com/#webpage",
+        url: URL,
+        name: NAME,
+        datePublished: "2025-02-05T11:26:39+00:00",
+        dateModified: "2025-12-12T19:17:19+00:00",
+        about: { "@id": "https://lovosis.com/#organization" },
+        isPartOf: { "@id": "https://lovosis.com/#website" },
+        primaryImageOfPage: { "@id": IMAGE },
+        inLanguage: "en-US",
+      },
+      {
+        "@type": "Person",
+        "@id": URL,
+        name: "Lovosis",
+        url: URL,
+        image: {
+          "@type": "ImageObject",
+          "@id": URL,
+          url: URL,
+          caption: NAME,
+          inLanguage: "en-US",
+        },
+        sameAs: [URL],
+        worksFor: { "@id": "https://lovosis.com/#organization" },
+      },
+      {
+        "@type": "Article",
+        headline: title,
+        keywords: "",
+        datePublished: "2024-02-05T11:26:39+00:00",
+        dateModified: "2025-12-12T19:17:19+00:00",
+        author: { "@id": URL, name: "Johns Abraham" },
+        publisher: { "@id": "https://lovosis.com/#organization" },
+        description: "",
+        name: NAME,
+        "@id": "https://totaleng.in/#richSnippet",
+        isPartOf: { "@id": "https://lovosis.com/#webpage" },
+        image: { "@id": IMAGE },
+        inLanguage: "en-US",
+        mainEntityOfPage: { "@id": "https://lovosis.com=/#webpage" },
+      },
+    ],
+  };
+---
+
+<style>
+  .autoRotate{
+    animation: autoRotateAnimation;
+    animation-timeline: view();
+  }
+  @keyframes autoRotateAnimation{
+      from{
+          transform: rotate(0deg);
+      }
+      to{
+          transform: rotate(360deg);
+      }
+  }  
+
+  .autoShow{
+    animation: autoShowAnimation both;
+    animation-timeline: view(70% 5%);
+
+    }
+
+    @keyframes autoShowAnimation{
+    from{
+        opacity: 0;
+        transform: translateY(200px) scale(0.3);
+    }to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    }
+
+    .fadeInRight {
+    animation: fadeInRightAnimation;
+    animation-timeline: view();
+    }
+
+    @keyframes fadeInRightAnimation {
+        from {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+</style>
+
+
+<MainLayout
+  title={pageTitle} sd={structuredData}
+ 
+>
+
+
+
+<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+
+  <div class="text-center bg-gray-100 dark:bg-neutral-500 p-5 md:p-12 rounded-2xl mb-20">
+    <h1
+      class="text-balance animate-fade-in-left text-3xl md:text-6xl md:leading-tight font-bold tracking-tight text-neutral-800 dark:text-neutral-100"
+    >
+      {abtitle}
+    </h1>
+    <p class="mt-1 text-pretty text-neutral-600 dark:text-neutral-200">
+      {absubTitle}
+    </p>
+  </div>
+
+
+
+  <div class="mx-auto grid gap-4 px-4 mb-24 md:mb-14 sm:px-6 md:grid-cols-2 md:items-center md:gap-8 lg:px-8 2xl:max-w-full">
+   
+    <div>
+      <div class="autoShow">
+          <div class="col-span-full h-5/2 pb-12 md:pt-5 pt-8 w-full rounded-xl bg-neutral-100 dark:bg-white/[.075] sm:h-3/4 lg:col-span-7 lg:col-start-6 lg:h-full">
+          <h2 class="block text-balance text-3xl px-5 font-bold tracking-tight text-neutral-800 dark:text-neutral-200 sm:text-4xl lg:text-6xl lg:leading-tight">
+          <Fragment set:html={Abouttitle} />
+              </h2>
+              {AboutsubTitle &&
+                  <p class="mt-5 text-pretty text-base px-5 leading-relaxed text-neutral-700 dark:text-neutral-400 w-11/12">
+                      {AboutsubTitle}
+                  </p>
+              }
+          </div>
+      </div>
+    </div>
+    
+    <!-- About Image Section -->
+    <div class="flex w-full fadeInRight p-5 rounded-2xl justify-center items-center md:items-center">
+        <div class=" lg:col-span-3 lg:col-end-10 lg:mt-0 ">
+          <div class="space-y-6 sm:space-y-8">
+            <img src="/pictures/banner2.png" alt="hero-image" class="w-full h-auto rounded-xl">
+          </div>
+        </div>
+    </div>
+
+    
+  </div>
+
+  
+
+
+  <!-- Grid -->
+  <div class="lg:grid pb-16 md:pt-10 lg:grid-cols-12 lg:items-center lg:gap-16">
+    <div class="lg:col-span-6">
+      
+
+      <div class="relative h-full w-full flex items-center justify-center">
+        <div class="profileCard_container relative p-9 md:p-12 border-2 border-dashed rounded-full border-spacing-4 border-blue-600">
+          
+          <button class="profile_item left-[25px] -top-[26px] absolute rounded-full bg-cover cursor-pointer border border-teal-600 p-[2px] active:scale-95 hover:scale-150 transition-all duration-500">
+            <span class="block w-[70px] h-[70px] transition-all duration-500 rounded-full z-[2] bg-white p-1">
+              <img src="/pictures/Brand Logo/hikvision.png" alt="hero-image" class="w-full h-auto mt-5">
+            </span>
+          </button>
+      
+          <button class="profile_item right-[16px] top-2 absolute rounded-full bg-cover cursor-pointer border border-teal-600 p-[2px] active:scale-95 hover:scale-150 transition-all duration-500">
+            <span class="block w-[70px] h-[70px] transition-all duration-500 rounded-full z-[2] bg-white p-1">
+              <img src="/pictures/Brand Logo/dahua.png" alt="hero-image" class="w-full h-auto mt-5">
+            </span>
+          </button>
+      
+          <button class="profile_item -left-9 top-32 absolute rounded-full bg-cover cursor-pointer border border-teal-600 p-[2px] active:scale-95 hover:scale-150 transition-all duration-500">
+            <span class="block w-[70px] h-[70px] transition-all duration-500 rounded-full z-[2] bg-white p-1">
+              <img src="/pictures/Brand Logo/ewind.png" alt="hero-image" class="w-full h-auto mt-5">
+            </span>
+          </button>
+      
+          <button class="profile_item -right-5 top-44 absolute rounded-full bg-cover cursor-pointer border border-teal-600 p-[2px] active:scale-95 hover:scale-150 transition-all duration-500">
+            <span class="block w-[70px] h-[70px] transition-all duration-500 rounded-full z-[2] bg-white p-1">
+              <img src="/pictures/Brand Logo/western.png" alt="hero-image" class="w-full h-auto mt-5">
+            </span>
+          </button>
+      
+          <button class="profile_item -bottom-8 left-20 absolute rounded-full bg-cover cursor-pointer border border-teal-600 p-[2px] active:scale-95 hover:scale-150 transition-all duration-500">
+            <span class="block w-[70px] h-[70px] transition-all duration-500 rounded-full z-[2] bg-white p-1">
+              <img src="/pictures/Brand Logo/Toshiba.png" alt="hero-image" class="w-full h-auto mt-5">
+            </span>
+          </button>
+      
+          
+      
+          <button class="profile_item w-[200px] h-[200px] p-1 border-2 autoShow rounded-full hover:border-blue-600 cursor-pointer transition-all duration-500 z-0">
+            <div class="w-full h-full flex items-center justify-center p-2 rounded-full active:scale-95 hover:scale-95 object-cover transition-all duration-500">
+              <img src="/pictures/logo.png" alt="hero-image" class="w-full h-auto object-cover noRotate">
+            </div>
+          </button>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="mt-20 md:mt-0 p-6 md:p-1 sm:mt-10 lg:col-span-5 lg:mt-0">
+      <div class="space-y-6 sm:space-y-8">
+        <div class="space-y-2 md:space-y-4">
+          <h2
+            class="text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-200 lg:text-4xl"
+          >
+            {title}
+          </h2>
+          {
+            subTitle && (
+              <p class="text-pretty text-neutral-600 dark:text-neutral-400">
+                {subTitle}
+              </p>
+            )
+          }
+        </div>
+        {
+          benefits && (
+            <ul class="space-y-2 sm:space-y-4">
+              {benefits.map((item) => (
+                <li class="flex space-x-3">
+                  <Fragment set:html={ListItemMarker} />
+                  <span class="text-pretty text-base font-medium text-neutral-600 dark:text-neutral-400">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+    </div>
+  </div>
+
+
+  <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+    <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+      <div>
+        <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-blue-600 dark:text-teal-600 uppercase rounded-full bg-teal-accent-400">
+          Core Team
+        </p>
+      </div>
+      <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-teal-600 dark:text-blue-600 sm:text-4xl md:mx-auto">
+        <span class="relative inline-block">
+          <svg viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
+            <defs>
+              <pattern id="1d4040f3-9f3e-4ac7-b117-7d4009658ced" x="0" y="0" width=".135" height=".30">
+                <circle cx="1" cy="1" r=".7"></circle>
+              </pattern>
+            </defs>
+            <rect fill="url(#1d4040f3-9f3e-4ac7-b117-7d4009658ced)" width="52" height="24"></rect>
+          </svg>
+          <span class="relative">Explore</span>
+        </span>
+        our talented team of professionals
+      </h2>
+    </div>
+
+    <div class="scroll-container mx-auto max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 lg:py-6 2xl:max-w-full">
+      <div class="flex flex-col-2 md:flex-col-2 items-center justify-center gap-y-2 gap-x-3 sm:flex-row sm:gap-x-12 sm:gap-y-0 lg:gap-x-5">
+        <div>
+          <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+            <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="/pictures/team/profile Gafoor.jpg" alt="Person" />
+            <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <p class="mb-1 text-lg font-bold text-gray-100">Mr.Abdul Gafoor</p>
+              <p class="mb-4 text-xs text-gray-100">CEO and Founder</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-container mx-auto max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 lg:py-6 2xl:max-w-full">
+      <div class="flex flex-col-2 md:flex-col-2 items-center justify-center gap-y-2 gap-x-3 sm:flex-row sm:gap-x-12 sm:gap-y-0 lg:gap-x-5">
+        <div>
+          <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+            <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="/pictures/team/6.jpg" alt="Person" />
+            <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <p class="mb-1 text-lg font-bold text-gray-100">Mishal Abdul Gafoor</p>
+              <p class="mb-4 text-xs text-gray-100">Account Sales Manager</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+            <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="/pictures/team/1.jpg" alt="Person" />
+            <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <p class="mb-1 text-lg font-bold text-gray-100">Muhammed Saleem</p>
+              <p class="mb-4 text-xs text-gray-100">Sales Assistant</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+            <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="/pictures/team/8.jpg" alt="Person" />
+            <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <p class="mb-1 text-lg font-bold text-gray-100">Althiya Titus</p>
+              <p class="mb-4 text-xs text-gray-100">HR & Admin Manager</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+            <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="/pictures/team/7.jpg" alt="Person" />
+            <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <p class="mb-1 text-lg font-bold text-gray-100">Antu Mathews</p>
+              <p class="mb-4 text-xs text-gray-100">Account sales manager</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-container mx-auto max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 lg:py-6 2xl:max-w-full">
+      <div class="flex flex-col-2 md:flex-col-2 items-center justify-center gap-y-2 gap-x-3 sm:flex-row sm:gap-x-12 sm:gap-y-0 lg:gap-x-5">
+        <div>
+          <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+            <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="/pictures/team/2.jpg" alt="Person" />
+            <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <p class="mb-1 text-lg font-bold text-gray-100">Shaik Nihaal</p>
+              <p class="mb-4 text-xs text-gray-100">Chief Sales Manager</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+            <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="/pictures/team/3.jpg" alt="Person" />
+            <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <p class="mb-1 text-lg font-bold text-gray-100">Rincy Antu</p>
+              <p class="mb-4 text-xs text-gray-100">Office Admin</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+            <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="/pictures/team/5.jpg" alt="Person" />
+            <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+              <p class="mb-1 text-lg font-bold text-gray-100">Suhail</p>
+              <p class="mb-4 text-xs text-gray-100">Purchase Assistant</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+
+
+</section>
+  
+  
+  
+</MainLayout>

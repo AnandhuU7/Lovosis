@@ -1,0 +1,55 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import CardEvent from "@/components/cardEvent.astro";
+
+const eventsPost: CollectionEntry<"event">[] = (
+  await getCollection("event")
+).sort(
+  (a: CollectionEntry<"event">, b: CollectionEntry<"event">) =>
+    b.data.startDate.valueOf() - a.data.startDate.valueOf()
+);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: eventsPost.map((p: CollectionEntry<"event">) => {
+    return {
+      "@type": "ListItem",
+      position: p.data.id,
+      url: `${Astro.url.origin}/event/${p.slug} `,
+      description: p.data.description,
+      startDate: p.data.startDate,
+      endDate: p.data.endDate,
+      name: p.data.title,
+      image: "name",
+      location: {
+        "@type": "Place",
+        name: p.data.location,
+        address: p.data.address,
+      },
+
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "AE",
+        availability: "https://schema.org/InStock",
+      },
+    };
+  }),
+};
+---
+
+<MainLayout
+  title="Lovosis Technology L.L.C | Events"
+  ,
+  description="Lovosis Technology L.L.C Events"
+  sd={structuredData}
+>
+  <main class="container mx-auto px-4 py-8 text-black dark:text-white">
+    <h1 class="mb-12 text-center text-4xl font-bold">Upcoming Events</h1>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {eventsPost.map((eventEntry) => <CardEvent eventEntry={eventEntry} />)}
+    </div>
+  </main>
+</MainLayout>

@@ -1,0 +1,19 @@
+User-agent: Googlebot
+Disallow:
+Allow: /
+
+
+User-agent: Yandex
+Disallow:
+Allow: /
+
+
+User-agent: archive.org_bot
+Disallow:
+Allow: /
+
+
+User-agent: *
+Disallow: /
+
+Sitemap: https://lovosis.com/sitemap-index.xml

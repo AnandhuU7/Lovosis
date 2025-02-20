@@ -1,0 +1,325 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
+
+interface Props {
+  title: string;
+  subTitle?: string;
+  description?: string;
+  benefits?: Array<string>;
+}
+
+const title: string = "Buy Imou CCTV Cameras in Bulk | Wholesale Distributor for Security Systems";
+const description: string ="Looking for affordable and high-quality Imou cameras? We are a trusted wholesale distributor of Imou CCTV cameras, offering smart security solutions at unbeatable prices. Explore our bulk pricing options for residential, commercial, and industrial needs. Contact us for a quote today!"
+
+
+const cards = [
+  {
+    title: "NVR",
+    link: "https://imou-dubai.com/product-category/imou-nvr/",
+    bgImage: "url('pictures/nvr-imou.webp')", 
+  },
+  {
+    title: "Home Security",
+    link: "https://imou-dubai.com/product-category/imou-home-security/",
+    bgImage: "url('pictures/home-imou.webp')",
+  },
+  {
+    title: "Cameras",
+    link: "https://imou-dubai.com/product-category/imou-cameras/",
+    bgImage: "url('pictures/ip-imou.webp')", 
+  },
+  {
+    title: "Accessories",
+    link: "https://imou-dubai.com/product-category/imou-accessories/",
+    bgImage: "url('pictures/acc-imou.webp')", 
+  },
+];
+
+const structuredData={
+  
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Lovosis Technology L.L.C",
+  "url": "https://www.lovosis.com",
+  "logo": "https://lovosis.com/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+971 50 9162488",
+    "contactType": "Sales",
+    "areaServed": "AE",
+    "availableLanguage": "English"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Satellite Market Naif Deira,Baghlaf Building Showroom No.5",
+    "addressLocality": "Dubai",
+    "addressRegion": "United Arab Emirates",
+    "postalCode": "123421",
+    "addressCountry": "AE"
+  },
+  "sameAs": [
+    "https://www.instagram.com/_lovosis_group_of_companies_/",
+    "https://in.linkedin.com/company/lovosis-technology-llc"
+  ],
+  "brand": {
+    "@type": "Brand",
+    "name": "Imou",
+    "url": "https://www.imou.com",
+    "logo": "https://lovosis.com/pictures/Brand%20Logo/Imou.png"
+  },
+  "product": {
+    "@type": "Product",
+    "name": "Imou CCTV Camera",
+    "image": "https://lovosis.com/pictures/imou.png",
+    "description": {description},
+    "brand": {
+      "@type": "Brand",
+      "name": "Imou"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://lovosis.com/imou",
+      "priceCurrency": "AED",
+      "price": "250",
+      "eligibleRegion": {
+        "@type": "Place",
+        "name": "UAE"
+      },
+      "priceValidUntil": "2024-12-31"
+    }
+  }
+}
+
+---
+
+<style>
+  .autoRotate{
+    animation: autoRotateAnimation;
+    animation-timeline: view();
+  }
+  @keyframes autoRotateAnimation{
+      from{
+          transform: rotate(0deg);
+      }
+      to{
+          transform: rotate(360deg);
+      }
+  }  
+
+  .autoShow{
+    animation: autoShowAnimation both;
+    animation-timeline: view(70% 5%);
+
+    }
+
+    @keyframes autoShowAnimation{
+    from{
+        opacity: 0;
+        transform: translateY(200px) scale(0.3);
+    }to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    }
+
+    .fadeInRight {
+    animation: fadeInRightAnimation;
+    animation-timeline: view();
+    }
+
+    @keyframes fadeInRightAnimation {
+        from {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .fadeInUp {
+    animation: fadeInUpAnimation;
+    animation-timeline: view();
+    }
+
+    @keyframes fadeInUpAnimation {
+        from {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .fadeInUps {
+    animation: fadeInUpsAnimation;
+    animation-timeline: view();
+    }
+
+    @keyframes fadeInUpsAnimation {
+        from {
+            opacity: 0;
+            transform: translateY(100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
+</style>
+
+
+<MainLayout
+  title={title} sd={structuredData} description ={description}
+ 
+>
+
+
+
+<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+
+ 
+    <div class="grid lg:grid-cols-2 justify-items-center gap-5">
+    <div class="flex flex-col justify-center">
+        <img src="/pictures/Brand Profile/7.jpg" alt="billboard image" class="rounded-lg" />
+    </div>
+
+    <div class="order-1 lg:order-2 fadeInRight">
+        <h2 class="text-3xl font-semibold text-gray-900 dark:text-gray-200">IMOU wholesale Distributor</h2>
+        <p class="text-md mt-4 dark:text-gray-300">Welcome to the premier destination for IMOU security solutions in Dubai. As an authorized distributor, we are committed to delivering advanced surveillance technology tailored to the unique needs of our customers. Experience unparalleled safety with our wide range of IMOU products designed for both home and business use.
+
+            Our cutting-edge IMOU products are engineered to blend seamlessly into your Dubai lifestyle, providing robust protection with features like advanced motion detection, night vision, and real-time alerts right to your mobile device. As the leading Authorized IMOU Distributor in Dubai, we offer an extensive selection of IMOU’s latest releases, including the popular Bullet, Dome, and Ranger series, all designed to keep you connected and secure. Whether you’re safeguarding your residence or monitoring your business, IMOU’s reliable and user-friendly cameras are the smart choice for those who demand the best in security. Shop now and join the IMOU family, ensuring peace of mind with technology that watches over you.
+        </p>
+        <div class="mt-8 grid w-full sm:inline-flex">
+            <PrimaryCTA title="Contact Us" url=https://imou-dubai.com/contact-us/ />
+        </div>
+        
+    </div>
+  </div>
+ 
+
+
+  <div class="text-center mt-32 rounded-2xl mb-5">
+    <h2 class="text-balance animate-fade-in-left text-2xl md:text-4xl md:leading-tight font-bold tracking-tight text-neutral-800 dark:text-neutral-100">
+    IMOU Product Categories
+    </h2>
+  </div>
+
+
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:py-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {cards.map((card, index) => (
+        <div class="bg-cover bg-center h-64 rounded-xl flex items-center justify-center"
+             style={`background-image: ${card.bgImage};`}>
+          <a href={card.link} class="text-white text-base font-bold bg-black bg-opacity-50 p-4 rounded-xl">
+            {card.title}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+
+
+
+
+<div class="text-center mt-32 rounded-2xl mb-5 fadeInUps">
+  <h2 class="text-balance animate-fade-in-left text-2xl md:text-4xl md:leading-tight font-bold tracking-tight text-neutral-800 dark:text-neutral-100">
+  Contact for More Details
+  </h2>
+  
+</div>
+
+
+<div class="text-center bg-gray-100 dark:bg-neutral-500 p-5 md:p-12 rounded-2xl mb-20">
+        
+
+    <div class="bg-gray-100 py-5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="lg:text-center">
+              <p class=" max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                Get in touch with us for any inquiries, collaborations, or support. We're here to assist and answer your questions!
+              </p>
+          </div>
+  
+          <div class="mt-10">
+              <dl class="items-center justify-center space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+                  <div class="flex items-center justify-center">
+                      <div class="flex-shrink-0">
+                          <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                              <!-- Heroicon name: globe-alt -->
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                              </svg>
+  
+                          </div>
+                      </div>
+                      <div class="ml-4">
+                          <p class="mt-2 text-base text-gray-500">
+                            Baghlaf Building Shop No.11 Satellite Market, Naif, Deira – Dubai
+                          </p>
+                      </div>
+                  </div>
+  
+                  <div class="flex md:items-center md:justify-center">
+                      <div class="flex-shrink-0">
+                          <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                              <!-- Heroicon name: phone -->
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                              </svg>
+  
+                          </div>
+                      </div>
+                      <div class="ml-4">
+                          <p class="mt-2 text-base text-gray-500">
+                            +971 55 946 2214
+                          </p>
+                      </div>
+                  </div>
+  
+                  <div class="flex">
+                      <div class="flex-shrink-0">
+                          <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                              <!-- Heroicon name: mail -->
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                              </svg>
+  
+                          </div>
+                      </div>
+                      <div class="ml-4">
+                        <p class="mt-2 text-base text-gray-500">
+                            sales@imou-dubai.com
+                          </p>
+                      </div>
+                  </div>
+  
+
+                  
+                  
+              </dl>
+          </div>
+      </div>
+  </div>
+
+
+  </div>
+
+
+
+</section>
+
+</MainLayout>
