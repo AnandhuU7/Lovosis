@@ -1,81 +1,102 @@
 ---
-// Client-side script imports need to go in a client:* directive
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 import MainLayout from "@/layouts/MainLayout.astro";
-
 interface Card {
   title: string;
   desc: string;
   img: string;
   alt: string;
   slug: string;
+  features?: string[];
 }
 
-// Fetch content from the "contentCollection"
-const content = await getCollection('content');
+const content = await getCollection("content");
 const cards: Card[] = content.map((item) => ({
   title: item.data.title,
   desc: item.data.desc,
   img: item.data.img.src,
-  alt: item.data.img.src,
+  alt: item.data.alt,
   slug: item.slug,
+  features: item.data.features,
 }));
-
-const pageTitle: string = "Photography Content";
-const description: string = "Building modern and fast web experiences with photography tutorials.";
+const pageTitle: string =
+  "Advanced Surveillance Solutions | Secure Your Home & Business with HD Cameras";
+const description: string =
+  "Discover cutting-edge surveillance solutions designed to protect your home and business. Explore high-definition security cameras that are reliable, smart, and adaptable to all environments. Find the perfect system to meet your needs today!";
 ---
+
 <MainLayout title={pageTitle} description={description}>
   <div>
     {/* Hero Section */}
     <header class="hero-section">
       <div class="hero-content">
-        <h2 class="text-4xl font-bold">Welcome to Photography Content</h2>
-        <p class="mt-2 text-lg">Building modern and fast web experiences</p>
+        <h2 class="text-4xl font-bold">Advanced Surveillance Solutions</h2>
+        <p class="mt-2 text-lg">
+          Secure your home and business with high-definition security cameras.
+          Reliable, smart, and built for all environments.
+        </p>
       </div>
     </header>
-
     {/* Search Bar */}
-    <section class="max-w-[1400px] mx-auto px-4 pt-8">
-      <div class="max-w-2xl mx-auto mb-12">
-        <h2 class="text-3xl font-bold text-center mb-6">Photography</h2>
+    <section class="mx-auto max-w-[1400px] px-4 pt-8">
+      <div class="mx-auto mb-12 max-w-2xl">
+        <h2 class="mb-6 text-center text-3xl font-bold">Camera</h2>
         <div class="relative">
-          <input 
-            type="text" 
+          <input
+            type="text"
             id="search"
-            class="w-full py-3 px-4 pl-12 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 shadow-sm" 
+            class="focus:border-blue-500 focus:ring-blue-500 w-full rounded-lg border border-gray-300 px-4 py-3 pl-12 text-base shadow-sm focus:outline-none focus:ring-1"
             placeholder="Search tutorials..."
           />
-          <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          <svg
+            class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
         </div>
       </div>
     </section>
-
     {/* Photo Grid */}
-    <section class="max-w-[1400px] mx-auto px-4 py-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {cards.map((card, index) => (
-          <div class="bg-white shadow-lg rounded-lg overflow-hidden transition-all duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl">
-            <img src={card.img} alt={card.alt} class="w-full h-56 object-cover" />
-            <div class="p-6 flex flex-col items-center">
-              <h3 class="text-xl font-semibold">{card.title}</h3>
-              <p class="text-gray-600 mt-3 mb-4">{card.desc}</p>
-              <a href={`/content/${card.slug}`} class="read-more-btn">Read More</a>
+    <section class="mx-auto max-w-[1400px] px-4 pb-8">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {
+          cards.map((card) => (
+            <div class="transform overflow-hidden rounded-lg bg-white shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl">
+              <img
+                src={card.img}
+                alt={card.alt}
+                class="h-56 w-full object-cover"
+              />
+              <div class="flex flex-col items-center p-6">
+                <h3 class="text-xl font-semibold">{card.title}</h3>
+                <p class="mb-4 mt-3 text-gray-600">{card.desc}</p>
+                <a href={`/content/${card.slug}`} class="read-more-btn">
+                  Read More
+                </a>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </section>
-
     {/* No Results Message */}
-    <p id="no-results" class="hidden text-center py-8 text-xl text-gray-600 font-medium bg-gray-50 rounded-lg mx-4 my-6 shadow-inner">
-      <span class="block text-3xl mb-2">🔍</span>
+    <p
+      id="no-results"
+      class="mx-4 my-6 hidden rounded-lg bg-gray-50 py-8 text-center text-xl font-medium text-gray-600 shadow-inner"
+    >
+      <span class="mb-2 block text-3xl">🔍</span>
       No matching results found
     </p>
   </div>
 </MainLayout>
-
 <style>
   /* Hero Section Styles */
   .hero-section {
@@ -85,26 +106,24 @@ const description: string = "Building modern and fast web experiences with photo
   .hero-content {
     @apply bg-black bg-opacity-50 px-4 py-16;
   }
-
   /* Read More Button Styles */
   .read-more-btn {
-    @apply bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform relative overflow-hidden border-2 border-transparent;
+    @apply relative transform overflow-hidden rounded-lg border-2 border-transparent bg-blue-600 px-6 py-3 font-bold text-white transition-all duration-300;
   }
   .read-more-btn:hover {
-    @apply bg-white text-blue-600 border-blue-600 -translate-y-1 shadow-xl;
+    @apply -translate-y-1 border-blue-600 bg-white text-blue-600 shadow-xl;
   }
   .read-more-btn:active {
     @apply scale-95;
   }
   .read-more-btn::before {
-    @apply absolute top-0 left-0 w-full h-full bg-white scale-x-0 transition-transform duration-300 origin-left -z-10;
-    content: '';
+    @apply absolute left-0 top-0 -z-10 h-full w-full origin-left scale-x-0 bg-white transition-transform duration-300;
+    content: "";
   }
   .read-more-btn:hover::before {
     @apply scale-x-100;
   }
 </style>
-
 <script>
   // Client-side search functionality
   const searchInput = document.getElementById("search");

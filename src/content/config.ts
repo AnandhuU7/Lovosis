@@ -128,6 +128,7 @@ const contentCollection = defineCollection({
       alt: z.string(),
       publishedTime: z.string(), 
       modifiedTime: z.string().optional(), 
+      features: z.array(z.string()).optional()
     }),
 });
 
