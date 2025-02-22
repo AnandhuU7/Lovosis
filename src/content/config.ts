@@ -123,12 +123,14 @@ const contentCollection = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      desc: z.string(), 
-      img: image(),
+      desc: z.string(),
+      img: image(), 
+      images: z.array(image()).optional(),
       alt: z.string(),
-      publishedTime: z.string(), 
-      modifiedTime: z.string().optional(), 
-      features: z.array(z.string()).optional()
+      publishedTime: z.string(),
+      modifiedTime: z.string().optional(),
+      features: z.array(z.string()).optional(),
+      id: z.number(),
     }),
 });
 

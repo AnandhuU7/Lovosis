@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "@/layouts/MainLayout.astro";
+
 interface Card {
   title: string;
   desc: string;
@@ -8,17 +9,22 @@ interface Card {
   alt: string;
   slug: string;
   features?: string[];
+  id: number; 
 }
 
 const content = await getCollection("content");
-const cards: Card[] = content.map((item) => ({
-  title: item.data.title,
-  desc: item.data.desc,
-  img: item.data.img.src,
-  alt: item.data.alt,
-  slug: item.slug,
-  features: item.data.features,
-}));
+const cards: Card[] = content
+  .map((item) => ({
+    title: item.data.title,
+    desc: item.data.desc,
+    img: item.data.img.src,
+    alt: item.data.alt,
+    slug: item.slug,
+    features: item.data.features,
+    id: item.data.id, 
+  }))
+  .sort((a, b) => a.id - b.id); 
+
 const pageTitle: string =
   "Advanced Surveillance Solutions | Secure Your Home & Business with HD Cameras";
 const description: string =
